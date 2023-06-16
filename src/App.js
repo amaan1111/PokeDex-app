@@ -15,26 +15,28 @@ function App() {
   const [filterType, setFilterType] = useState("");
 
   const typeColors = {
-    normal: { backgroundColor: "#A8A878", color: "#FFF" },
-    fire: { backgroundColor: "#F08030", color: "#FFF" },
-    water: { backgroundColor: "#6890F0", color: "#FFF" },
-    grass: { backgroundColor: "#78C850", color: "#FFF" },
-    electric: { backgroundColor: "#F8D030", color: "#000" },
-    ice: { backgroundColor: "#98D8D8", color: "#000" },
-    fighting: { backgroundColor: "#C03028", color: "#FFF" },
-    poison: { backgroundColor: "#A040A0", color: "#FFF" },
-    ground: { backgroundColor: "#E0C068", color: "#000" },
-    flying: { backgroundColor: "#A890F0", color: "#FFF" },
-    psychic: { backgroundColor: "#F85888", color: "#FFF" },
-    bug: { backgroundColor: "#A8B820", color: "#FFF" },
-    rock: { backgroundColor: "#B8A038", color: "#FFF" },
-    ghost: { backgroundColor: "#705898", color: "#FFF" },
-    dragon: { backgroundColor: "#7038F8", color: "#FFF" },
-    dark: { backgroundColor: "#705848", color: "#FFF" },
-    steel: { backgroundColor: "#B8B8D0", color: "#000" },
-    fairy: { backgroundColor: "#EE99AC", color: "#000" },
+    Normal: { backgroundColor: "#A8A878", color: "#FFF" },
+    Fire: { backgroundColor: "#F08030", color: "#FFF" },
+    Water: { backgroundColor: "#6890F0", color: "#FFF" },
+    Grass: { backgroundColor: "#78C850", color: "#FFF" },
+    Electric: { backgroundColor: "#F8D030", color: "#000" },
+    Ice: { backgroundColor: "#98D8D8", color: "#000" },
+    Fighting: { backgroundColor: "#C03028", color: "#FFF" },
+    Poison: { backgroundColor: "#A040A0", color: "#FFF" },
+    Ground: { backgroundColor: "#E0C068", color: "#000" },
+    Flying: { backgroundColor: "#A890F0", color: "#FFF" },
+    Psychic: { backgroundColor: "#F85888", color: "#FFF" },
+    Bug: { backgroundColor: "#A8B820", color: "#FFF" },
+    Rock: { backgroundColor: "#B8A038", color: "#FFF" },
+    Ghost: { backgroundColor: "#705898", color: "#FFF" },
+    Dragon: { backgroundColor: "#7038F8", color: "#FFF" },
+    Dark: { backgroundColor: "#705848", color: "#FFF" },
+    Steel: { backgroundColor: "#B8B8D0", color: "#000" },
+    Fairy: { backgroundColor: "#EE99AC", color: "#000" },
   };
-
+  const capitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
   const fetchPokemon = async () => {
     try {
       setIsLoading(true);
@@ -49,13 +51,14 @@ function App() {
         const pokemonResponse = await axios.get(pokemon.url);
         const capitalizedPokemonName =
           pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
-
         const pokemonDetails = {
           id: pokemonResponse.data.id,
           name: capitalizedPokemonName,
-          types: pokemonResponse.data.types.map((type) => type.type.name),
-          abilities: pokemonResponse.data.abilities.map(
-            (ability) => ability.ability.name
+          types: pokemonResponse.data.types.map((type) =>
+            capitalizeFirstLetter(type.type.name)
+          ),
+          abilities: pokemonResponse.data.abilities.map((ability) =>
+            capitalizeFirstLetter(ability.ability.name)
           ),
           height: pokemonResponse.data.height,
           weight: pokemonResponse.data.weight,
@@ -94,7 +97,10 @@ function App() {
 
       const pokemonDetails = {
         name: response.data.name,
-        types: response.data.types.map((type) => type.type.name),
+        types: pokemonResponse.data.types.map(
+          (type) =>
+            type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1) // Capitalize type name
+        ),
         abilities: response.data.abilities.map(
           (ability) => ability.ability.name
         ),
@@ -147,24 +153,24 @@ function App() {
         className="form-select"
       >
         <option value="">All Types</option>
-        <option value="normal">Normal</option>
-        <option value="fire">Fire</option>
-        <option value="water">Water</option>
-        <option value="grass">Grass</option>
-        <option value="electric">electric</option>
-        <option value="ice">ice</option>
-        <option value="fighting">fighting</option>
-        <option value="poison">poison</option>
-        <option value="ground">ground</option>
-        <option value="flying">flying</option>
-        <option value="psychic">psychic</option>
-        <option value="bug">bug</option>
-        <option value="rock">rock</option>
-        <option value="ghost">ghost</option>
-        <option value="dragon">dragon</option>
-        <option value="dark">dark</option>
-        <option value="steel">steel</option>
-        <option value="fairy">fairy</option>
+        <option value="Normal">Normal</option>
+        <option value="Fire">Fire</option>
+        <option value="Water">Water</option>
+        <option value="Grass">Grass</option>
+        <option value="Electric">electric</option>
+        <option value="Ice">ice</option>
+        <option value="Fighting">fighting</option>
+        <option value="Poison">poison</option>
+        <option value="Ground">ground</option>
+        <option value="Flying">flying</option>
+        <option value="Psychic">psychic</option>
+        <option value="Bug">bug</option>
+        <option value="Rock">rock</option>
+        <option value="Ghost">ghost</option>
+        <option value="Dragon">dragon</option>
+        <option value="Dark">dark</option>
+        <option value="Steel">steel</option>
+        <option value="Fairy">fairy</option>
       </select>
 
       <form onSubmit={handleSearchSubmit} className="search-form">
