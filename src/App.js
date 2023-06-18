@@ -157,20 +157,20 @@ function App() {
         <option value="Fire">Fire</option>
         <option value="Water">Water</option>
         <option value="Grass">Grass</option>
-        <option value="Electric">electric</option>
-        <option value="Ice">ice</option>
-        <option value="Fighting">fighting</option>
-        <option value="Poison">poison</option>
-        <option value="Ground">ground</option>
-        <option value="Flying">flying</option>
-        <option value="Psychic">psychic</option>
-        <option value="Bug">bug</option>
-        <option value="Rock">rock</option>
-        <option value="Ghost">ghost</option>
-        <option value="Dragon">dragon</option>
-        <option value="Dark">dark</option>
-        <option value="Steel">steel</option>
-        <option value="Fairy">fairy</option>
+        <option value="Electric">Electric</option>
+        <option value="Ice">Ice</option>
+        <option value="Fighting">Fighting</option>
+        <option value="Poison">Poison</option>
+        <option value="Ground">Ground</option>
+        <option value="Flying">Flying</option>
+        <option value="Psychic">Psychic</option>
+        <option value="Bug">Bug</option>
+        <option value="Rock">Rock</option>
+        <option value="Ghost">Ghost</option>
+        <option value="Dragon">Dragon</option>
+        <option value="Dark">Dark</option>
+        <option value="Steel">Steel</option>
+        <option value="Fairy">Fairy</option>
       </select>
 
       <form onSubmit={handleSearchSubmit} className="search-form">
