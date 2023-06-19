@@ -13,6 +13,8 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [error, setError] = useState(null);
   const [filterType, setFilterType] = useState("");
+  const [isSearchResultsDisplayed, setIsSearchResultsDisplayed] =
+    useState(false);
 
   const typeColors = {
     Normal: { backgroundColor: "#A8A878", color: "#FFF" },
@@ -97,7 +99,7 @@ function App() {
 
       const pokemonDetails = {
         name: response.data.name,
-        types: pokemonResponse.data.types.map(
+        types: response.data.types.map(
           (type) =>
             type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1) // Capitalize type name
         ),
@@ -112,6 +114,7 @@ function App() {
       setSearchResults([pokemonDetails]);
       setIsLoading(false);
       setError(null);
+      setIsSearchResultsDisplayed(true);
     } catch (error) {
       console.log(error);
       setSearchResults([]);
@@ -140,6 +143,7 @@ function App() {
     setSearchResults([]);
     setSearchTerm("");
     setError(null);
+    setIsSearchResultsDisplayed(false);
   };
   const handleLoadMore = () => {
     fetchPokemon();
@@ -179,8 +183,9 @@ function App() {
           placeholder="Search Pokémon..."
           value={searchTerm}
           onChange={handleSearchChange}
+          className="search-input"
         />
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="search-button">
           Search
         </button>
       </form>
@@ -259,12 +264,14 @@ function App() {
                     </div>
                   ))}
           </div>
-          <button
-            className="btn btn-primary load-more-button"
-            onClick={handleLoadMore}
-          >
-            Load More
-          </button>
+          {!isSearchResultsDisplayed && (
+            <button
+              className="btn btn-primary load-more-button"
+              onClick={handleLoadMore}
+            >
+              Load Pokémon
+            </button>
+          )}
         </>
       )}
     </div>
