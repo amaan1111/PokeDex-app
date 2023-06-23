@@ -80,3 +80,7 @@ justify-content: center;
       border-radius: 8px;
       cursor: pointer;
     }
+
+.details-back-btn:hover{
+          background-color: #333;
+}
