@@ -226,9 +226,9 @@ function ListingsPage() {
                             alt={pokemon.name}
                           />
                           <h5 className="card-title">{pokemon.name}</h5>
-                          <p className="card-text">
-                            {pokemon.types.join(", ")}
-                          </p>
+                          <div className="card-text">
+                            <span>{pokemon.types}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -256,9 +256,9 @@ function ListingsPage() {
                             alt={pokemon.name}
                           />
                           <h5 className="card-title">{pokemon.name}</h5>
-                          <p className="card-text">
-                            {pokemon.types.join(", ")}
-                          </p>
+                          <div className="card-text">
+                            <span>{pokemon.types.join("|")}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
